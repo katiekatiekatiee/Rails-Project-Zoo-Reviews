@@ -16,20 +16,27 @@ class SessionsController < ApplicationController
     end
 
     def omniauth
-        @user = User.find_or_create_by(uid: auth['uid']) do |u|
-            u.name = auth['info']['name']
-            u.email = auth['info']['email']
-            u.image = auth['info']['image']
-          end
+        # @user = User.find_or_create_by(uid: auth['uid']) do |u|
+        #     u.name = auth['info']['name']
+        #     u.email = auth['info']['email']
+            
+        #   end
       
-        session[:user_id] = @user.id
+        # session[:user_id] = @user.id
       
-        render 'welcome/home'
+        # render 'welcome/home'
+        user = User.from_omniauth(auth)
+        if user.valid? 
+            session[:user_id] = user.id
+            flash[:message] = "Successful Login!!"
+            redirect_to zoos_path
+ 
+        end
     end
 
     def destroy
         session.delete(:user_id)
-        redirect_to zoos_path
+        redirect_to root_path
     end
 
     private
