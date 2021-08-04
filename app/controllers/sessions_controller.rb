@@ -26,11 +26,11 @@ class SessionsController < ApplicationController
       
         # render 'welcome/home'
         user = User.from_omniauth(auth)
+        #byebug
         if user.valid? 
             session[:user_id] = user.id
-            flash[:message] = "Successful Login!!"
+            flash[:message] = "Login Successful"
             redirect_to zoos_path
- 
         end
     end
 
