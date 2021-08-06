@@ -1,11 +1,11 @@
 class LocationsController < ApplicationController
 
     def index
-        @states = Location.all
+        @locations = Location.all
     end
 
     def show
-        @state = Location.find_by_id(params[:id])
+        @location = Location.find_by_id(params[:id])
     end
 
 end
