@@ -6,7 +6,7 @@ class ZoosController < ApplicationController
     def new 
         if params[:location_id] &&  @location = Location.find_by_id(params[:location_id])
         
-            @zoo = @location.zoos.build
+            @zoo = @location.zoo.build
         else
             @zoo = Zoo.new
             @zoo.build_location

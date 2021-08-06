@@ -1,6 +1,10 @@
 <h1>All Zoos</h1>
 
 <% @zoos.each do |zoo| %>
-    <%= link_to zoo.name, zoos_path(zoo) %>
-    <%= link_to zoo.location, locations_path(zoo.location) %>
-    
+<ul>
+   <li> <%= link_to zoo.name, zoo_path(zoo) %></li>
+   <%# <li> <%= link_to zoo.location, location_zoos_path(zoo.location) %>
+   
+   <% end %>
+
+</ul>
