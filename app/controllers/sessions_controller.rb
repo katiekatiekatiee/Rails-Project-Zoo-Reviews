@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
 
     def create
         user = User.find_by_email(params[:user][:email])
+        #byebug
         if user && user.authenticate(params[:user][:password])
             session[:user_id] = user.id
             redirect_to zoos_path
@@ -33,7 +34,7 @@ class SessionsController < ApplicationController
         #byebug
         if user.valid? 
             session[:user_id] = user.id
-            flash[:message] = "Login Successful"
+            
             redirect_to zoos_path
         end
     end
