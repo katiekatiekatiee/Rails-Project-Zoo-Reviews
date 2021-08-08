@@ -1,0 +1,6 @@
+<h1><%= @review.title %></h1>
+<h3><%= @review.user.username %> said: </h3>
+<p><%= @review.content %></p>
+
+<%= link_to "Edit Review", edit_review_path(@review)%>
+<%= link_to "Delete Review", review_path(@review), method: 'delete' %>
