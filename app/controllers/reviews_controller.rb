@@ -5,16 +5,24 @@ class ReviewsController < ApplicationController
     end
     
     def new
-        @review = Review.new
+        if params[:zoo_id] && @zoo = Zoo.find_by_id(params[:zoo_id])
+            @review = @zoo.review.build
+        else
+            @review = Review.new
+        end
     end
 
     def create
         @review = Review.new(review_params)
-        @review.title = params[:title]
-        @review.content = params[:content]
+        if params[:zoo_id]
+            @zoo = Zoo.find_by_id(params[:zoo_id])
+        end
 
-        review.save
-        redirect_to review_path(@review)
+        if @review.save
+            redirect_to review_path(@review)
+        else
+            render :new
+        end
     end 
 
     def edit
@@ -24,9 +32,13 @@ class ReviewsController < ApplicationController
     end
 
     def show 
+        @review = Review.find_by_id(params[:id])
     end
 
     def destroy
+        @review = Review.find_by_id(params[:id])
+        @review.delete
+        redirect_to reviews_path
     end
     
 
