@@ -1,0 +1,10 @@
+<h1>All States</h1>
+<h2>Click to see the zoos that've been visited in each location</h2>
+
+
+<% @locations.each do |s|%>
+<ul>
+    <li><%= link_to s.location, location_path(s) %></li>
+</ul>
+
+<% end %>

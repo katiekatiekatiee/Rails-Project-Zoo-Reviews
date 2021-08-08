@@ -31,11 +31,11 @@ class ZoosController < ApplicationController
         @zoo = Zoo.find_by_id(params[:id])
     end
 
-    def destroy
-        @zoo = Zoo.find_by_id(params[:id])
-        @zoo.destroy
-        redirect_to zoos_path
-    end
+    # def destroy
+    #     @zoo = Zoo.find_by_id(params[:id])
+    #     @zoo.destroy
+    #     redirect_to zoos_path
+    # end
 
     private
 
