@@ -4,7 +4,7 @@
 
 <% @locations.each do |s|%>
 <ul>
-    <li><%= link_to s.location, location_path(s) %></li>
+    <li><%= link_to s.name, location_path(s) %></li>
 </ul>
 
 <% end %>
