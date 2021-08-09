@@ -9,7 +9,6 @@ class ZoosController < ApplicationController
             @zoo = @location.zoo.build
         else
             @zoo = Zoo.new
-            @zoo.build_location
         end
     end
 
@@ -40,7 +39,7 @@ class ZoosController < ApplicationController
     private
 
     def zoo_params
-        params.require(:zoo).permit(:name, location_attributes:[:state])
+        params.require(:zoo).permit(:name, :location_id)
     end
 
 end

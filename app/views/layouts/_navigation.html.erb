@@ -4,7 +4,7 @@
     <%= link_to 'Sign Up', signup_path%>
     <%= link_to 'Log In', login_path%>
 <% else %>
-    <%= link_to "My Profile", users_path(@user) %> |
+    <%= link_to "My Profile", user_path(current_user) %> |
     <%= link_to "Add Review", new_review_path %> | 
     <%= link_to "All Reviews", reviews_path %> |
     <%= link_to "Add a New Zoo", new_zoo_path %> |

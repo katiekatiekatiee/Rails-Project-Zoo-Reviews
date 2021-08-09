@@ -4,10 +4,8 @@
     <%= f.label :name %>
     <%= f.text_field :name %><br>
 
-    <%= f.fields_for :location do |location| %> 
-        <%= location.label :name %> 
-        <%= location.collection_select(:location_id, Location.all, :id, :location, { :prompt => "Select State" }) %>
-    <% end %> 
+    <%= f.collection_select(:location_id, Location.all, :id, :name, { :prompt => "Select State" }) %>
+
 
     <%= f.submit %>
 <% end %>
