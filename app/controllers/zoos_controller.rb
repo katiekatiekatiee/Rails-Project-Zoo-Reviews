@@ -1,4 +1,7 @@
 class ZoosController < ApplicationController
+
+    before_action :require_login
+
     def index
         @zoos = Zoo.all
     end
@@ -41,5 +44,9 @@ class ZoosController < ApplicationController
     def zoo_params
         params.require(:zoo).permit(:name, :location_id)
     end
+
+    def require_login
+        return head(:forbidden) unless session.include? :user_id
+      end
 
 end

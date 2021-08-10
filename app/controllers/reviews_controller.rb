@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
     
+    before_action :require_login
+
     def index
         @reviews = Review.all
     end
@@ -46,5 +48,9 @@ class ReviewsController < ApplicationController
     def review_params
         params.require(:review).permit(:title, :content)
     end
+
+    def require_login
+        return head(:forbidden) unless session.include? :user_id
+      end
 
 end
