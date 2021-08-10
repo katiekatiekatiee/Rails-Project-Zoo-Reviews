@@ -13,10 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+ @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+ @import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed&family=Montserrat:wght@300&display=swap");
 body {
  background-color: #F8F1F1;
  color: black;
- text-align: left;
+ text-align: center;
 }
 
 a {
@@ -42,4 +45,14 @@ a {
 
  a:visited {
      color: blue;
+ }
+
+ h1 {
+    font-family: 'Montserrat', sans-serif;
+    color: #125D98;
+ }
+
+ p {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    color: black;
  }
