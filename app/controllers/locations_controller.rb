@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
 
-    before_action :require_login
+    before_action :redirect_if_not_logged_in?
 
     def index
         @locations = Location.all
@@ -10,9 +10,6 @@ class LocationsController < ApplicationController
         @location = Location.find_by_id(params[:id])
     end
 
-    private
-    def require_login
-        return head(:forbidden) unless session.include? :user_id
-      end
+   
 
 end

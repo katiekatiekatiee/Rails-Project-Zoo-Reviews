@@ -1,6 +1,6 @@
 class ZoosController < ApplicationController
 
-    before_action :require_login
+    before_action :redirect_if_not_logged_in?
 
     def index
         @zoos = Zoo.all
@@ -45,8 +45,5 @@ class ZoosController < ApplicationController
         params.require(:zoo).permit(:name, :location_id)
     end
 
-    def require_login
-        return head(:forbidden) unless session.include? :user_id
-      end
 
 end

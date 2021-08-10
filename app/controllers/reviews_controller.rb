@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
     
-    before_action :require_login
+    before_action :redirect_if_not_logged_in?
 
     def index
         @reviews = Review.all
@@ -16,11 +16,14 @@ class ReviewsController < ApplicationController
 
     def create
         @review = Review.new(review_params)
+        byebug
         if params[:zoo_id]
             @zoo = Zoo.find_by_id(params[:zoo_id])
+
         end
 
         if @review.save
+            @review.user = session[:user_id]
             redirect_to review_path(@review)
         else
             render :new
@@ -46,11 +49,7 @@ class ReviewsController < ApplicationController
 
     private
     def review_params
-        params.require(:review).permit(:title, :content)
+        params.require(:review).permit(:title, :content, :zoo_id)
     end
-
-    def require_login
-        return head(:forbidden) unless session.include? :user_id
-      end
 
 end
