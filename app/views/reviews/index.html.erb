@@ -1,0 +1,7 @@
+<h1>All Reviews</h1>
+
+<% @reviews.each do |r| %>
+    <ul>
+        <li><%= link_to r.title, review_path(r) %> - <%= r.zoo.name %> - <%= r.zoo.location.name %></li>
+    </ul>
+ <% end %>

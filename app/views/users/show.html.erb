@@ -1,0 +1,8 @@
+<h1><%= @user.username %>'s Reviews</h1>
+
+<%= @user.reviews.each do |r| %>
+   <ul> 
+    <li><%= link_to r.title, review_path(r) %></li>
+   </ul>
+<% end %>
+

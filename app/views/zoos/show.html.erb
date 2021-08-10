@@ -1,0 +1,16 @@
+<h1>Reviews of <%= @zoo.name %></h1>
+<h3><%= @zoo.location.name %></h3>
+
+<% @zoo.reviews.each do |r| %>
+    <ul>
+    <li><%= link_to r.title, review_path(r) %><br>
+        <%= r.content %> </li>
+    </ul>
+
+<% end %>
+
+
+
+
+
+<%# <%= link_to "Delete", zoo_path(@zoo), method: 'delete' %> 

@@ -1,0 +1,12 @@
+<%= form_for @review do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %><br>
+    <%= f.label :content %>
+    <%= f.text_area :content %><br>
+
+    <h3>Select an Already Existing Zoo:</h3>
+    <%= f.collection_select :zoo_id, Zoo.all, :id, :name %><br>
+
+    <%= f.submit "Add Review" %>
+
+<% end %>
