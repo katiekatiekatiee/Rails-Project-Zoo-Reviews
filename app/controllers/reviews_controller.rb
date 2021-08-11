@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
     end
     
     def new
-        if params[:zoo_id] && @zoo = Zoo.find_by_id(params[:zoo_id])
+        if params[:zoo_id] && @zoo = Zoo.find(params[:id])
             @review = @zoo.review.build
         else
             @review = Review.new
@@ -18,7 +18,7 @@ class ReviewsController < ApplicationController
         @review = Review.new(review_params)
         #byebug
         if params[:zoo_id]
-            @zoo = Zoo.find_by_id(params[:zoo_id])
+            @zoo = Zoo.find(params[:id])
 
         end
         
@@ -39,11 +39,11 @@ class ReviewsController < ApplicationController
     end
 
     def show 
-        @review = Review.find_by_id(params[:id])
+        @review = Review.find(params[:id])
     end
 
     def destroy
-        @review = Review.find_by_id(params[:id])
+        @review = Review.find(params[:id])
         @review.delete
         redirect_to reviews_path
     end

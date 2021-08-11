@@ -7,7 +7,7 @@ class ZoosController < ApplicationController
     end
     
     def new 
-        if params[:location_id] &&  @location = Location.find_by_id(params[:location_id])
+        if params[:location_id] &&  @location = Location.find(params[:id])
         
             @zoo = @location.zoo.build
         else
@@ -18,7 +18,7 @@ class ZoosController < ApplicationController
     def create 
         @zoo = Zoo.new(zoo_params)
         if params[:location_id]
-            @location = Location.find_by_id(params[:location_id])
+            @location = Location.find(params[:id])
         end
         
         if @zoo.save
@@ -30,7 +30,7 @@ class ZoosController < ApplicationController
 
     
     def show
-        @zoo = Zoo.find_by_id(params[:id])
+        @zoo = Zoo.find(params[:id])
     end
 
     # def destroy
