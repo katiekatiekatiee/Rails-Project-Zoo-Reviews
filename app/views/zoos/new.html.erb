@@ -4,8 +4,15 @@
     <%= f.label :name %>
     <%= f.text_field :name %><br>
 
-    <%= f.collection_select(:location_id, Location.all, :id, :name, { :prompt => "Select State" }) %>
+    <%= f.collection_select(:location_id, Location.all, :id, :name, { :prompt => "Select State" }) %><br>
 
+    <p>Add a Review:</p>
+     <%= f.fields_for :review do |r| %>
+        <%= r.label :title %>
+        <%= r.text_field :title %>
+        <%= r.label :content %>
+        <%= r.text_area :content %>
+     <% end %>
 
     <%= f.submit %>
 <% end %>

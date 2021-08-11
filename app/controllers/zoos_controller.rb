@@ -7,11 +7,13 @@ class ZoosController < ApplicationController
     end
     
     def new 
+       
         if params[:location_id] &&  @location = Location.find(params[:id])
         
             @zoo = @location.zoo.build
         else
             @zoo = Zoo.new
+            @zoo.reviews.build
         end
     end
 
@@ -42,7 +44,7 @@ class ZoosController < ApplicationController
     private
 
     def zoo_params
-        params.require(:zoo).permit(:name, :location_id)
+        params.require(:zoo).permit(:name, :location_id, reviews_attributes:[:title, :content])
     end
 
 
