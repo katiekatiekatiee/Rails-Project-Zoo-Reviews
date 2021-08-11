@@ -16,10 +16,10 @@ Rails.application.routes.draw do
     resources :zoos
   end
 
-  resrouces :zoos do 
+  resources :zoos do 
     resources :reviews
   end
-  
+
   resources :reviews
   resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
