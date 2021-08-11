@@ -33,9 +33,17 @@ class ReviewsController < ApplicationController
     end 
 
     def edit
+        @review = Review.find(params[:id])
+        redirect_if_not_authenticated 
     end
 
     def update 
+        @review = Review.find(params[:id])
+         if @review.update(review_params)
+            redirect_to review_path(@review)
+         else
+            render :edit
+         end
     end
 
     def show 
@@ -44,8 +52,10 @@ class ReviewsController < ApplicationController
 
     def destroy
         @review = Review.find(params[:id])
-        @review.delete
+        redirect_if_not_authenticated 
+       if @review.delete
         redirect_to reviews_path
+       end
     end
     
 
@@ -53,5 +63,11 @@ class ReviewsController < ApplicationController
     def review_params
         params.require(:review).permit(:title, :content, :zoo_id)
     end
+
+    def redirect_if_not_authenticated 
+        if @review.user != current_user 
+          redirect_to reviews_path
+        end
+      end
 
 end
