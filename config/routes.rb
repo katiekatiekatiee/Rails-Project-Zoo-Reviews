@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root to: 'sessions#welcome'
-  
+
   get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
   get '/auth/:provider/callback', to: 'sessions#omniauth' 
 
@@ -22,11 +22,9 @@ Rails.application.routes.draw do
     resources :zoos
   end
 
-  
-
   resources :reviews
-  resources :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :users, only: [:new, :create, :show]
+  
 end
 
 
