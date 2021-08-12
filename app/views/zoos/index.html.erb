@@ -1,10 +1,15 @@
+<% if @location %>
+    <h1><%= @location.name %>'s Zoos</h1>
+    <h3> Click <%= link_to "HERE", new_location_zoo_path(@location) %> to add a new zoo at this location! </h3>
+<% else %>
+
 <h1>All Zoos</h1>
+<% end %>
 
 <% @zoos.each do |zoo| %>
 <ul>
    <li> <%= link_to zoo.name, zoo_path(zoo) %> - <%= link_to zoo.location.name, location_path(zoo.location)%></li>
     
-   
   </ul> 
    <% end %>
 

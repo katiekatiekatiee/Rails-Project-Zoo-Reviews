@@ -34,8 +34,9 @@ class SessionsController < ApplicationController
         #byebug
         if user.valid? 
             session[:user_id] = user.id
-            
             redirect_to zoos_path
+        else
+            redirect_to login_path
         end
     end
 

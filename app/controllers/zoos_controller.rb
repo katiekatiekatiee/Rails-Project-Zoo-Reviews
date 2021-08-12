@@ -3,22 +3,27 @@ class ZoosController < ApplicationController
     before_action :redirect_if_not_logged_in?
 
     def index
-        @zoos = Zoo.all
+        if params[:location_id] &&  @location = Location.find(params[:location_id])
+            @zoos = @location.zoos
+        else
+            @zoos = Zoo.all
+        end
     end
     
     def new 
-       
-        if params[:location_id] &&  @location = Location.find(params[:id])
-        
-            @zoo = @location.zoo.build
+        if params[:location_id] &&  @location = Location.find(params[:location_id])
+            @zoo = @location.zoos.build
         else
             @zoo = Zoo.new
-            @zoo.reviews.build
         end
+        @zoo.reviews.build
     end
 
     def create 
         @zoo = Zoo.new(zoo_params)
+        if params[:location_id]
+            @location = Location.find(params[:location_id])
+        end
         @zoo.reviews.each do |review|
             review.user = current_user
         end

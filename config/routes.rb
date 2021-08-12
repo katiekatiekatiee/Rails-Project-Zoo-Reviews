@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
   root to: 'sessions#welcome'
+  
+  get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
+  get '/auth/:provider/callback', to: 'sessions#omniauth' 
 
-  get '/auth/facebook/callback', to: 'sessions#omniauth' 
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
@@ -12,13 +14,15 @@ Rails.application.routes.draw do
 
   delete '/logout', to: 'sessions#destroy'
 
+  resources :zoos do 
+    resources :reviews
+  end
+
   resources :locations do
     resources :zoos
   end
 
-  resources :zoos do 
-    resources :reviews
-  end
+  
 
   resources :reviews
   resources :users

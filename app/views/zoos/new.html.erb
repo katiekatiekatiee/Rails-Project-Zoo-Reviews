@@ -3,12 +3,15 @@
 
 <h1>Add a New Zoo by filling out the fields below:</h1>
 
-<%= form_for @zoo do |f| %>
+<%= form_for [@location, @zoo] do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %><br>
 
-    <%= f.collection_select(:location_id, Location.all, :id, :name, { :prompt => "Select State" }) %><br>
-
+    <% if @location %>
+        <%= f.hidden_field :location_id, value: @location.id %>
+    <% else %>
+        <%= f.collection_select(:location_id, Location.all, :id, :name, { :prompt => "Select State" }) %><br>
+    <% end %>
     <p>Add a Review:</p>
      <%= f.fields_for :reviews do |r| %>
         <%= r.label :title %>
