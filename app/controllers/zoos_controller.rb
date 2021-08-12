@@ -19,11 +19,14 @@ class ZoosController < ApplicationController
 
     def create 
         @zoo = Zoo.new(zoo_params)
+        @zoo.reviews.each do |review|
+            review.user = current_user
+        end
         if params[:location_id]
             @location = Location.find(params[:id])
         end
         
-        if @zoo.save
+        if @zoo.save   
             redirect_to zoos_path
         else
             render :new

@@ -1,3 +1,6 @@
+<%= render partial: "layouts/error", locals: { object: @zoo } %>
+
+
 <h1>Add a New Zoo by filling out the fields below:</h1>
 
 <%= form_for @zoo do |f| %>
@@ -7,7 +10,7 @@
     <%= f.collection_select(:location_id, Location.all, :id, :name, { :prompt => "Select State" }) %><br>
 
     <p>Add a Review:</p>
-     <%= f.fields_for :review do |r| %>
+     <%= f.fields_for :reviews do |r| %>
         <%= r.label :title %>
         <%= r.text_field :title %>
         <%= r.label :content %>
@@ -16,3 +19,4 @@
 
     <%= f.submit %>
 <% end %>
+
