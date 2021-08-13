@@ -6,7 +6,7 @@ class ZoosController < ApplicationController
         if params[:location_id] &&  @location = Location.find(params[:location_id])
             @zoos = @location.zoos
         else
-            @zoos = Zoo.all
+            @zoos = Zoo.order_by_name
         end
     end
     
