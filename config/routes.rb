@@ -15,11 +15,11 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :zoos do 
-    resources :reviews
+    resources :reviews, only: [:new, :create]
   end
 
   resources :locations do
-    resources :zoos
+    resources :zoos, only: [:new, :create, :index]
   end
 
   resources :reviews
