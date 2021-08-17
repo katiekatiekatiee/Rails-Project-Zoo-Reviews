@@ -1,11 +1,5 @@
 <%= render partial: "layouts/error", locals: { object: @review } %>
+<%= render partial: "form" %>
 
-<%= form_for @review do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %><br>
-    <%= f.label :content %>
-    <%= f.text_area :content %><br>
 
-<%= f.submit "Update Review" %>
 
-<% end %>

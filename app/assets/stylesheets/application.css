@@ -52,9 +52,20 @@ a {
     color: #125D98;
  }
 
+ h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #3C4F65;
+ }
+
+ h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #125D98;
+ }
+
+
  p {
     font-family: 'Barlow Semi Condensed', sans-serif;
-    color: black;
+    color: #543864;
  }
 
  ul {
@@ -62,3 +73,5 @@ a {
     text-align: center;
     color: #FD8C04;
   }
+
+  
