@@ -16,7 +16,6 @@ class ReviewsController < ApplicationController
 
     def create
         @review = Review.new(review_params)
-        #byebug
         if params[:zoo_id]
             @zoo = Zoo.find(params[:id])
 
@@ -52,7 +51,6 @@ class ReviewsController < ApplicationController
 
     def destroy
         @review = Review.find(params[:id])
-        #redirect_if_not_authenticated 
         if @review.user == current_user
             @review.delete
             redirect_to reviews_path

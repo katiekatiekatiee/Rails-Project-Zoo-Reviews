@@ -3,7 +3,7 @@ class ZoosController < ApplicationController
     before_action :redirect_if_not_logged_in?
 
     def index
-        if params[:location_id] &&  @location = Location.find(params[:location_id])
+        if params[:location_id] && @location = Location.find(params[:location_id])
             @zoos = @location.zoos
         else
             @zoos = Zoo.order_by_name
@@ -26,9 +26,6 @@ class ZoosController < ApplicationController
         end
         @zoo.reviews.each do |review|
             review.user = current_user
-        end
-        if params[:location_id]
-            @location = Location.find(params[:id])
         end
         
         if @zoo.save   
